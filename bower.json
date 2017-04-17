@@ -1,0 +1,27 @@
+{
+  "name": "gulpfil-setup",
+  "description": "",
+  "license": "MIT",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bulma": "^0.4.0",
+    "svgxuse": "^1.2.3"
+  },
+  "overrides": {
+    "bulma": {
+      "main": [
+        "sass/**/*.sass",
+        "bulma.sass"
+      ]
+    },
+    "svgxuse": {
+      "main": "svgxuse.js"
+    }
+  }
+}
