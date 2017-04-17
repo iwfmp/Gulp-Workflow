@@ -4,7 +4,7 @@
 // ----------------------------------
 // available tasks:
 //    'gulp html'          : main html task
-//    'gulp html:render'   : copy & prettify html
+//    'gulp html:copy'     : copy & prettify html
 //    'gulp html:inject'   : inject minified css/js
 // ----------------------------------
 // plugins:
