@@ -10,14 +10,19 @@
     "bower_components"
   ],
   "dependencies": {
-    "bulma": "^0.4.0",
-    "svgxuse": "^1.2.3"
+    "svgxuse": "^1.2.3",
+    "inuitcss": "^6.0.0-beta.4",
+    "sass-mq": "^3.3.2"
   },
   "overrides": {
-    "bulma": {
+    "inuitcss": {
       "main": [
-        "sass/**/*.sass",
-        "bulma.sass"
+        "**/*.scss"
+      ]
+    },
+    "sass-mq": {
+      "main": [
+        "*.scss"
       ]
     },
     "svgxuse": {

@@ -38,7 +38,7 @@ module.exports = function(gulp, $, path, config) {
         // only pass through newer source files
         .pipe($.newer, path.to.sass.dist.dev + '/**/*.css')
         // start cache
-        .pipe($.cached, 'sass');
+        // .pipe($.cached, 'sass');
 
     // compile sass task
     gulp.task(config.task.sass + ':compile', 'compile scss to css', function() {

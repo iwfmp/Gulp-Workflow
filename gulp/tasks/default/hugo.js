@@ -28,7 +28,7 @@ module.exports = function(gulp, $, path, config) {
         // only pass through newer source files
         .pipe($.newer, path.to.hugo.watch)
         // start cache
-        .pipe($.cached, 'hugo');
+        // .pipe($.cached, 'hugo');
 
     // copy fonts to dev folder
     gulp.task(config.task.hugo, 'render and copy hugo to dev folder', function() {

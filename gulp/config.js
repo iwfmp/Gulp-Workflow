@@ -32,13 +32,13 @@ module.exports = {
             server: {
                 baseDir: path.to.dist.dev
             },
-            open: 'false'
+            open: false
         },
         prod: {
             server: {
                 baseDir: path.to.dist.prod
             },
-            open: 'false'
+            open: false
         }
     },
 
@@ -190,8 +190,8 @@ module.exports = {
     error: function(error) {
         // output an error message
         console.log(' -------------------------------------');
-        $.util.log('\r', '      Plugin Error:', gutil.colors.green(error.plugin));
-        $.util.log('\r', '      Error Message:', gutil.colors.blue(error.message));
+        gutil.log('\r', '      Plugin Error:', gutil.colors.green(error.plugin));
+        gutil.log('\r', '      Error Message:', gutil.colors.blue(error.message));
         console.log(' -------------------------------------');
 
         // emit the end event, to properly end the task

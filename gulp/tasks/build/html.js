@@ -20,7 +20,7 @@ module.exports = function(gulp, $, path, config) {
     // copy html to prod folder
     gulp.task(config.task.build + ':html:copy', 'copy html to prod folder', function() {
 
-        return gulp.src(path.to.html.dist.dev + '/**/*')
+        return gulp.src(path.to.html.dist.dev + '/*.html')
             .pipe($.prettify(
                 config.html.prettifyOptions // options
             ))
@@ -31,11 +31,12 @@ module.exports = function(gulp, $, path, config) {
     // inject css/js files task
     gulp.task(config.task.build + ':html:inject', 'inject css/js files', function() {
 
-        return gulp.src(path.to.html.dist.dev + '/*.html')
+        return gulp.src(path.to.html.dist.prod + '/*.html')
             // prevent breaking errors
             .pipe($.plumber({
                 errorHandler: config.error
             }))
+
             /**
              * CSS files
              */
@@ -46,6 +47,7 @@ module.exports = function(gulp, $, path, config) {
                 }),
                 config.html.injectProd.options // options
             ))
+
             /**
              * JS files
              */

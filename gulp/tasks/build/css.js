@@ -47,8 +47,6 @@ module.exports = function(gulp, $, path, config) {
             ))
             // concat all css files
             .pipe($.concat('style.css'))
-            // dest unminified file
-            .pipe(gulp.dest(path.to.sass.dist.prod))
             // minify
             .pipe($.csso())
             // rename files
