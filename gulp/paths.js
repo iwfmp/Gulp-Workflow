@@ -33,7 +33,7 @@ module.exports = {
         // hugo files
         hugo: {
             config: src + 'hugo/config.toml',
-            favicons: src + 'hugo/layouts/partials/favicons/html',
+            favicons: src + 'hugo/layouts/partials/favicons.html',
             src: src + 'hugo',
             dist: '../../' + dist + dev,
             watch: src + 'hugo/**/*.{toml,html,md}'
