@@ -35,7 +35,6 @@
     "gulp-rev": "^7.1.2",
     "gulp-rev-collector": "^1.1.1",
     "gulp-rev-del": "^1.0.1",
-    "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-strip-css-comments": "^1.2.0",
     "gulp-svg-symbols": "^2.0.2",
@@ -55,5 +54,7 @@
     "sassdoc": "^2.1.19",
     "stylestats": "^7.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "gulp-sass": "^3.1.0"
+  }
 }
