@@ -169,6 +169,7 @@ module.exports = {
             logging: false,
             online: false,
             html: path.to.html.index,
+            // html: path.to.hugo.favicons,
             replace: true,
             icons: {
                 android: false, // create Android homescreen icon

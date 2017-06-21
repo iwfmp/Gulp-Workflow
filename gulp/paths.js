@@ -34,7 +34,7 @@ module.exports = {
         hugo: {
             config: src + 'hugo/config.toml',
             src: src + 'hugo',
-            dist: '../../' + dist + dev + 'html',
+            dist: '../../' + dist + dev,
             watch: src + 'hugo/**/*.{toml,html,md}'
         },
 
