@@ -10,21 +10,9 @@
     "bower_components"
   ],
   "dependencies": {
-    "svgxuse": "^1.2.3",
-    "inuitcss": "^6.0.0-beta.4",
-    "sass-mq": "^3.3.2"
+    "svgxuse": "^1.2.3"
   },
   "overrides": {
-    "inuitcss": {
-      "main": [
-        "**/*.scss"
-      ]
-    },
-    "sass-mq": {
-      "main": [
-        "*.scss"
-      ]
-    },
     "svgxuse": {
       "main": "svgxuse.js"
     }
