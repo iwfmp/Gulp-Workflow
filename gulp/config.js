@@ -18,6 +18,7 @@ module.exports = {
         build      : 'build',
         clean      : 'clean',
         fonts      : 'fonts',
+        fonts      : 'inject',
         html       : 'html',
         hugo       : 'hugo',
         images     : 'images',
