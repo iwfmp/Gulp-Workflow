@@ -20,6 +20,7 @@
 
 module.exports = function(gulp, $, path, config) {
 
+
     // split out commonly used stream chains [ changed - newer - cached ]
     var cacheFiles = $.lazypipe()
         // only pass through changed files
@@ -29,8 +30,9 @@ module.exports = function(gulp, $, path, config) {
         // start cache
         .pipe($.cached, 'html');
 
+
     // copy fonts to dev folder
-    gulp.task(config.task.html, 'copy & prettify html to dev folder', function() {
+    gulp.task(config.task.html + ':render', 'copy & prettify html to dev folder', function() {
 
         return gulp.src(path.to.html.src)
             // only pass through changed & newer & not cached files
@@ -43,6 +45,18 @@ module.exports = function(gulp, $, path, config) {
             .pipe($.browserSync.reload({
                 stream: true
             }));
+
+    });
+
+
+    // main html task
+    gulp.task(config.task.html, 'main html task', function(cb) {
+
+        $.runSequence(
+            config.task.html + ':render',
+            config.task.inject,
+            cb
+        )
 
     });
 

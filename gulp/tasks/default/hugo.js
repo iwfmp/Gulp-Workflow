@@ -23,12 +23,14 @@
 
 module.exports = function(gulp, $, path, config) {
 
+
     // split out commonly used stream chains [ changed - newer - cached ]
     var cacheFiles = $.lazypipe()
         // only pass through changed files
         .pipe($.changed, path.to.hugo.watch)
         // only pass through newer source files
         .pipe($.newer, path.to.hugo.watch)
+
 
     // render hugo files
     gulp.task(config.task.hugo + ':render', 'render hugo files', function(cb) {
@@ -42,6 +44,7 @@ module.exports = function(gulp, $, path, config) {
         });
 
     });
+
 
     // prettify and refresh browser
     gulp.task(config.task.hugo + ':prettify', 'prettify hugo files', function() {
@@ -60,12 +63,14 @@ module.exports = function(gulp, $, path, config) {
 
     });
 
+
     // main sass task
     gulp.task(config.task.hugo, 'main hugo task', function(cb) {
 
         $.runSequence(
             config.task.hugo + ':render',
             config.task.hugo + ':prettify',
+            config.task.inject,
             cb
         )
 
