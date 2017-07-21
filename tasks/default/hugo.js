@@ -30,18 +30,32 @@ module.exports = function(gulp, $, path, config) {
         // start cache
         // .pipe($.cached, 'hugo');
 
-    // copy fonts to dev folder
-    gulp.task(config.task.hugo, 'render and copy hugo to dev folder', function() {
 
-        return gulp.src(path.to.html.src)
+    // render hugo files
+    gulp.task(config.task.hugo + ':render', 'render hugo files', function() {
+
+        var exec = require('child_process').exec;
+
+        exec(config.hugo.cmd, function(error, stdout, stderr) {
+            console.log('Builder Says: ' + stdout);
+            if (error !== null) {
+                console.log('stderr: ' + stderr);
+                console.log('exec error: ' + error);
+            }
+        });
+
+    });
+
+    // prettify and refresh browser
+    gulp.task(config.task.hugo + ':prettify', 'prettify hugo files', function() {
+
+        return gulp.src(path.to.html.dist.dev)
             // prevent breaking errors
             .pipe($.plumber({
                 errorHandler: config.error
             }))
             // only pass through changed & newer & not cached files
             .pipe(cacheFiles())
-            // Render Hugo files
-            .pipe($.exec(config.hugo.cmd, {encoding: 'utf-8'}))
             // beautify HTML
             .pipe($.prettify(
                 config.html.prettifyOptions // options
@@ -50,6 +64,17 @@ module.exports = function(gulp, $, path, config) {
             .pipe($.browserSync.reload({
                 stream: true
             }));
+
+    });
+
+    // main sass task
+    gulp.task(config.task.hugo, 'main hugo task', function(cb) {
+
+        $.runSequence(
+            config.task.hugo + ':render',
+            config.task.hugo + ':prettify',
+            cb
+        )
 
     });
 
