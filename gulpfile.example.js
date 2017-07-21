@@ -90,8 +90,8 @@ gulp.task('default', 'common default tasks for dev mode', function(cb) {
         config.task.scripts,
         config.task.svg,
 
-        config.task.hugo,
-        // config.task.html,
+        // config.task.hugo,
+        config.task.html,
         config.task.browserSync,
         'watch',
         cb

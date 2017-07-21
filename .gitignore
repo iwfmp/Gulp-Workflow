@@ -3,5 +3,7 @@ dist
 files
 node_modules
 src
+
 yarn.lock
 bower.json
+gulp.js
