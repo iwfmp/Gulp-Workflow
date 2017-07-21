@@ -14,35 +14,26 @@
 
 //    'gulp fonts'
 //    'gulp html'
-//          html:render - html:inject
 //    'gulp hugo'
+//          hugo:render - hugo:prettify
+//    'gulp inject'
 //    'gulp images'
 //          images:minify - images:favicons
 //    'gulp sass'
 //          sass:compile - sass:doc
-//    'gulp svg'
 //    'gulp scripts'
+//          scripts:local - scripts:vendor
+//    'gulp svg'
 
 //    'gulp debug'
 //          debug:colorguard - debug:psi - debug:selectorlist - debug:stylestats
 //    'gulp build'
-//          build:css - build:fonts - build:html - build:js - build:images - build:svg - build:rev
+//          build:css - build:fonts - build:html - build:images
+//          build:rev - build:scripts - build:svg
 //    'gulp publish'
 //          publish:gh-pages
 // ----------------------------------
-// plugins:
-//     gulp, run-sequence, gulp-util, gulp-plumber
-//     gulp-load-plugins, gulp-load-subtasks, gulp-help
-//     gulp-sass, gulp-sourcemaps, browser-sync
-//     gulp-newer, gulp-imagemin, gulp-svg-symbols, gulp-svgmin
-//     gulp-flatten, del, gulp-inject, gulp-cached
-//     gulp-autoprefixer, sassdoc, gulp-filter, gulp-changed
-//     gulp-rename, lazypipe, gulp-concat, gulp-uncss
-//     gulp-rev, gulp-rev-del, gulp-rev-collector, gulp-csso
-//     gulp-postcss, postcss-utilities, gulp-favicons, gulp-gh-pages
-//     gulp-strip-css-comments, gulp-cssbeautify, gulp-prettify
-//     gulp-uglify, gulp-jshint, ngrok, gulp-exec, gulp-utils
-// ----------------------------------
+
 
 // main gulp plugins
 var gulp     = require('gulp-help')(require('gulp')),
