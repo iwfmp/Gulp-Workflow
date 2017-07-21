@@ -27,21 +27,16 @@ module.exports = function(gulp, $, path, config) {
         .pipe($.changed, path.to.hugo.watch)
         // only pass through newer source files
         .pipe($.newer, path.to.hugo.watch)
-        // start cache
-        // .pipe($.cached, 'hugo');
-
 
     // render hugo files
-    gulp.task(config.task.hugo + ':render', 'render hugo files', function() {
+    gulp.task(config.task.hugo + ':render', 'render hugo files', function(cb) {
 
         var exec = require('child_process').exec;
 
-        exec(config.hugo.cmd, function(error, stdout, stderr) {
-            console.log('Builder Says: ' + stdout);
-            if (error !== null) {
-                console.log('stderr: ' + stderr);
-                console.log('exec error: ' + error);
-            }
+        exec(config.hugo.cmd, function(err, stdout, stderr) {
+            console.log(stdout);
+            console.log(stderr);
+            cb(err);
         });
 
     });
@@ -49,11 +44,7 @@ module.exports = function(gulp, $, path, config) {
     // prettify and refresh browser
     gulp.task(config.task.hugo + ':prettify', 'prettify hugo files', function() {
 
-        return gulp.src(path.to.html.dist.dev)
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
+        return gulp.src(path.to.html.dist.dev + '**/*.html')
             // only pass through changed & newer & not cached files
             .pipe(cacheFiles())
             // beautify HTML
@@ -67,11 +58,40 @@ module.exports = function(gulp, $, path, config) {
 
     });
 
+    // inject local css/js files task
+    gulp.task(config.task.hugo + ':inject', 'inject css/js files', function() {
+
+        return gulp.src(path.to.html.dist.dev + '**/*.html')
+            // only pass through changed & newer & not cached files
+            .pipe(cacheFiles())
+            // inject main css files
+            .pipe($.inject(gulp.src(
+                path.to.sass.dist.dev + '/*.css', {
+                    read: false
+                }),
+                config.html.inject.options // options
+            ))
+
+            // inject main js files
+            .pipe($.inject(gulp.src(
+                path.to.js.dist.dev + '/**/*.js', {
+                    read: false
+                }),
+                config.html.inject.options // options
+            ))
+            .pipe(gulp.dest(path.to.html.dist.dev))
+            .pipe($.browserSync.reload({
+                stream: true
+            }));
+
+    });
+
     // main sass task
     gulp.task(config.task.hugo, 'main hugo task', function(cb) {
 
         $.runSequence(
             config.task.hugo + ':render',
+            config.task.hugo + ':inject',
             config.task.hugo + ':prettify',
             cb
         )

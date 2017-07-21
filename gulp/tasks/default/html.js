@@ -36,10 +36,6 @@ module.exports = function(gulp, $, path, config) {
     gulp.task(config.task.html + ':copy', 'copy & prettify html to dev folder', function() {
 
         return gulp.src(path.to.html.src)
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             // only pass through changed & newer & not cached files
             .pipe(cacheFiles())
             // beautify HTML
@@ -57,10 +53,6 @@ module.exports = function(gulp, $, path, config) {
     gulp.task(config.task.html + ':inject', 'inject css/js files', function() {
 
         return gulp.src(path.to.html.dist.dev + '/*.html')
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             /**
              * CSS files
              */

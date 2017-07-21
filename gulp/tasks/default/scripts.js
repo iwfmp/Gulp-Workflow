@@ -9,6 +9,7 @@
 //     browser-sync          : $.browserSync
 //     gulp-cached           : $.cached
 //     gulp-changed          : $.changed
+//     gulp-concat           : $.concat
 //     gulp-newer            : $.newer
 //     gulp-plumber          : $.plumber
 //     lazypipe              : $.lazypipe
@@ -31,24 +32,48 @@ module.exports = function(gulp, $, path, config) {
         // start cache
         .pipe($.cached, 'js');
 
-    // compile sass task
-    gulp.task(config.task.scripts, 'work through js files', function() {
+    // compile js task
+    gulp.task(config.task.scripts + ':local', 'work through js files', function() {
 
         return gulp.src(path.to.js.src)
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             // only pass through changed & newer & not cached files
             .pipe(cacheFiles())
             // run jshint
             // .pipe($.jshint())
             // run uglify pipe
             .pipe($.uglify())
+            // concat to single file
+            .pipe($.concat('main.js'))
+            // move to dist folder
             .pipe(gulp.dest(path.to.js.dist.dev))
+            // browser reload
             .pipe($.browserSync.reload({
                 stream: true
             }));
+
+    });
+
+    // compile vendor task
+    gulp.task(config.task.scripts + ':vendor', 'work through js files', function() {
+
+        return gulp.src(path.to.js.vendor + '**/*.js')
+            // move to dist folder
+            .pipe(gulp.dest(path.to.js.dist.dev + '/vendor'))
+            // browser reload
+            .pipe($.browserSync.reload({
+                stream: true
+            }));
+
+    });
+
+    // main scripts task
+    gulp.task(config.task.scripts, 'main scripts task', function(cb) {
+
+        $.runSequence(
+            config.task.scripts + ':local',
+            config.task.scripts + ':vendor',
+            cb
+        )
 
     });
 

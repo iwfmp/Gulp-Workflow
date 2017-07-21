@@ -60,6 +60,24 @@ var gulp     = require('gulp-help')(require('gulp')),
 // require all tasks : gulp-load-subtasks
 $.loadSubtasks('./gulp/tasks/**/*.js', $, path, config);
 
+
+// Global error handling
+var gulp_src = gulp.src;
+gulp.src = function() {
+  return gulp_src.apply(gulp, arguments)
+    .pipe($.plumber(function(error) {
+      // Output an error message
+        console.log(' -------------------------------------');
+        gutil.log('\r', '      Plugin Error:', gutil.colors.green(error.plugin));
+        gutil.log('\r', '      Error Message:', gutil.colors.blue(error.message));
+        console.log(' -------------------------------------');
+      // emit the end event, to properly end the task
+      this.emit('end');
+    })
+  );
+};
+
+
 // common default tasks : for dev mode
 gulp.task('default', 'common default tasks for dev mode', function(cb) {
     sequence(
@@ -72,8 +90,8 @@ gulp.task('default', 'common default tasks for dev mode', function(cb) {
         config.task.scripts,
         config.task.svg,
 
-        // config.task.hugo,
-        config.task.html,
+        config.task.hugo,
+        // config.task.html,
         config.task.browserSync,
         'watch',
         cb

@@ -24,10 +24,6 @@ module.exports = function(gulp, $, path, config) {
     gulp.task(config.task.images + ':minify', 'minify images', function() {
 
         return gulp.src(path.to.images.src)
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             // only pass through changed files
             .pipe($.changed(path.to.images.dist.dev + '/**/*'))
             // only pass through newer source files
@@ -44,10 +40,6 @@ module.exports = function(gulp, $, path, config) {
     gulp.task(config.task.images + ':favicons', 'generate favicons', function() {
 
         return gulp.src(path.to.images.logo)
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             // generate favicons
             .pipe($.favicons(
                 config.images.faviconsOptions // options

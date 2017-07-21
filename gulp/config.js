@@ -46,7 +46,7 @@ module.exports = {
     ngrok: {
         options: {
             port: '3000', // Port
-            auth: 'USER:PASSWORD', // http basic authentication for tunnel
+            auth: 'iwfmp:zxasqw12', // http basic authentication for tunnel
             subdomain: url // reserved tunnel name
             // Access token is required, add it manually through CLI
         }
@@ -168,7 +168,7 @@ module.exports = {
             version: 1.0,
             logging: false,
             online: false,
-            html: path.to.html.index,
+            // html: path.to.html.index,
             // html: path.to.hugo.favicons,
             replace: true,
             icons: {

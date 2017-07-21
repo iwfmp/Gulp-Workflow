@@ -25,8 +25,8 @@ module.exports = {
             index: src + 'html/index.html',
             src: src + 'html/**/*.html',
             dist: {
-                dev: dist + dev + 'html',
-                prod: dist + prod + 'html'
+                dev: dist + dev,
+                prod: dist + prod
             }
         },
 
@@ -79,7 +79,7 @@ module.exports = {
 
         // svg
         svg: {
-            src: src + 'svg/*',
+            src: src + 'svg/**/*',
             dist: {
                 dev: dist + dev + 'svg',
                 prod: dist + prod + 'svg'
