@@ -4,3 +4,4 @@ files
 node_modules
 src
 yarn.lock
+bower.json
