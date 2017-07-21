@@ -3,17 +3,19 @@
 
 // ----------------------------------
 // available tasks:
-//    'gulp hugo'       : main hugo task
+//    'gulp hugo'          : main hugo task
+//    'gulp hugo:render'   : render hugo files
+//    'gulp hugo:prettify' : inject minified css/js//
 // ----------------------------------
 // plugins:
 //     browser-sync     : $.browserSync
 //     gulp-cached      : $.cached
 //     gulp-changed     : $.changed
 //     gulp-newer       : $.newer
-//     gulp-plumber     : $.plumber
 //     lazypipe         : $.lazypipe
 //
 //     gulp-exec        : $.exec
+//     gulp-prettify    : $.prettify
 // ----------------------------------
 // config:
 //     config.task.hugo : task name
@@ -58,40 +60,11 @@ module.exports = function(gulp, $, path, config) {
 
     });
 
-    // inject local css/js files task
-    gulp.task(config.task.hugo + ':inject', 'inject css/js files', function() {
-
-        return gulp.src(path.to.html.dist.dev + '**/*.html')
-            // only pass through changed & newer & not cached files
-            .pipe(cacheFiles())
-            // inject main css files
-            .pipe($.inject(gulp.src(
-                path.to.sass.dist.dev + '/*.css', {
-                    read: false
-                }),
-                config.html.inject.options // options
-            ))
-
-            // inject main js files
-            .pipe($.inject(gulp.src(
-                path.to.js.dist.dev + '/**/*.js', {
-                    read: false
-                }),
-                config.html.inject.options // options
-            ))
-            .pipe(gulp.dest(path.to.html.dist.dev))
-            .pipe($.browserSync.reload({
-                stream: true
-            }));
-
-    });
-
     // main sass task
     gulp.task(config.task.hugo, 'main hugo task', function(cb) {
 
         $.runSequence(
             config.task.hugo + ':render',
-            config.task.hugo + ':inject',
             config.task.hugo + ':prettify',
             cb
         )
