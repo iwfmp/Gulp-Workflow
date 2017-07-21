@@ -50,9 +50,9 @@ npm install -g gulp bower yarn
 ```
 git clone https://github.com/iwfmp/gulp-workflow.git .
 ```
-- Clone [source folder structure](https://github.com/iwfmp/gulp-source-structure)
+- Clone [source folder structure](https://github.com/iwfmp/boilerplate)
 ```
-git clone https://github.com/iwfmp/gulp-source-structure.git source
+git clone https://github.com/iwfmp/boilerplate.git src
 ```
 - Install Gulp dependencies
 ```
