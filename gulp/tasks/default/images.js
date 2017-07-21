@@ -53,7 +53,7 @@ module.exports = function(gulp, $, path, config) {
 
         $.runSequence(
             config.task.images + ':minify',
-            config.task.images + ':favicons',
+            // config.task.images + ':favicons',
             cb
         )
 
