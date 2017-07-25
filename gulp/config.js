@@ -187,17 +187,4 @@ module.exports = {
         }
             // options from here : https://github.com/haydenbleasel/favicons#nodejs
     },
-
-    // error handler
-    error: function(error) {
-        // output an error message
-        console.log(' -------------------------------------');
-        gutil.log('\r', '      Plugin Error:', gutil.colors.green(error.plugin));
-        gutil.log('\r', '      Error Message:', gutil.colors.blue(error.message));
-        console.log(' -------------------------------------');
-
-        // emit the end event, to properly end the task
-        this.emit('end');
-    }
-
 };
