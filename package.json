@@ -28,7 +28,6 @@
     "gulp-load-subtasks": "^1.1.2",
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-postcss": "^6.4.0",
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
@@ -41,7 +40,6 @@
     "gulp-svg-symbols": "^2.0.2",
     "gulp-svgmin": "^1.2.3",
     "gulp-uglify": "^2.1.2",
-    "gulp-uncss": "^1.0.6",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "jshint": "^2.9.4",
@@ -54,5 +52,10 @@
     "run-sequence": "^1.1.5",
     "sassdoc": "^2.1.19",
     "stylestats": "^7.0.1"
+  },
+  "dependencies": {
+    "gulp-postcss": "^7.0.0",
+    "postcss-uncss": "^0.15.0",
+    "uncss": "^0.15.0"
   }
 }

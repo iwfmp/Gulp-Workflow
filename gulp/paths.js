@@ -12,6 +12,7 @@ module.exports = {
     to: {
 
     	// dest folders
+        src: src,
         dist: {
             dev: dist + dev,
             prod: dist + prod,

@@ -29,14 +29,10 @@ module.exports = function(gulp, $, path, config) {
                 path.to.sass.dist.dev + '/*.css',
                 '!' + path.to.sass.dist.dev + '/**/_*{,/**}/'
             ])
-            // prevent breaking errors
-            .pipe($.plumber({
-                errorHandler: config.error
-            }))
             // remove unused css selectors
-            .pipe($.uncss(
-                config.css.uncssOptions // options
-            ))
+            // .pipe($.postcss([ $.uncss.postcssPlugin(
+            //     config.css.uncssOptions // options
+            // )]))
             // strip unimportant css comments
             .pipe($.stripCssComments(
                 config.css.stripCommentsOptions // options

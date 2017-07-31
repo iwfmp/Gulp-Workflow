@@ -115,7 +115,8 @@ module.exports = {
     css: {
         // uncss options
         uncssOptions: {
-            html: [path.to.html.dist.dev + '/*.html'],
+            html: [path.to.html.dist.dev + '/**/*.html'],
+            ignore: ['/^.o-field/', '.is-active']
             // more options
             // https://github.com/giakki/uncss#within-nodejs
         },
