@@ -148,6 +148,13 @@ module.exports = {
         }
     },
 
+    // publish task options
+    publish: {
+        publishOptions: {
+          remoteUrl:  ' git@github.com:iwfmp/alternative.git'
+        }
+    },
+
     // images task options
     images: {
         // imagemin options
