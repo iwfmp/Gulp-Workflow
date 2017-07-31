@@ -54,6 +54,7 @@
     "stylestats": "^7.0.1"
   },
   "dependencies": {
+    "gulp-gh-pages": "^0.5.4",
     "gulp-postcss": "^7.0.0",
     "postcss-uncss": "^0.15.0",
     "uncss": "^0.15.0"

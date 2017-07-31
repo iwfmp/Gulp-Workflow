@@ -17,7 +17,7 @@ module.exports = function(gulp, $, path, config) {
     // publish to github pages
     gulp.task(config.task.publish + ':gh-pages', 'publish to Github Pages', function() {
 
-        return gulp.src(path.to.publish.src)
+        return gulp.src(path.to.dist.prod + '**/*')
             .pipe($.ghPages());
 
     });

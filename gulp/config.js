@@ -18,10 +18,11 @@ module.exports = {
         build      : 'build',
         clean      : 'clean',
         fonts      : 'fonts',
-        inject     : 'inject',
         html       : 'html',
         hugo       : 'hugo',
         images     : 'images',
+        inject     : 'inject',
+        publish    : 'publish',
         sass       : 'sass',
         scripts    : 'js',
         svg        : 'svg'
